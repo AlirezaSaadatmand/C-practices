@@ -16,6 +16,7 @@ int fruitX , fruitY;
 void createFood(){
     fruitX = rand() % WIDTH;
     fruitY = rand() % HEIGHT;
+    for (int i = x)
 }
 
 void input(){
@@ -35,11 +36,11 @@ void input(){
 
 void draw(){
     system("cls");
-    for (int i = 0;i < 20;i++){
-        for (int j = 0;j < 40;j++){
-            if (i == 0 || i == 19){
+    for (int i = 0;i < HEIGHT;i++){
+        for (int j = 0;j < WIDTH;j++){
+            if (i == 0 || i == HEIGHT - 1){
                 printf("#");
-            }else if (j == 0 || j == 39){
+            }else if (j == 0 || j == WIDTH - 1){
                 printf("#");
             }else{
                 printf(" ");
