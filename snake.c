@@ -53,8 +53,8 @@ void draw(){
                 printf("#");
             }else{
                 bool isSnake = false;
-                for (int i = 0;i < snakeLength ;i++){
-                    if (j == snakeX[i] && i == sankeY[i]){
+                for (int k = 0;k < snakeLength ;k++){
+                    if (j == snakeX[k] && i == sankeY[k]){
                         printf("O");
                         isSnake = true;
                     }
@@ -70,7 +70,10 @@ void draw(){
 
 
 int main(){
+    snakeX[0] = x;
+    sankeY[0] = y;
     createFood();
+
 
     while (!gameover){
         userInput();
