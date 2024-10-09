@@ -13,10 +13,17 @@ int x = WIDTH / 2 , y = HEIGHT / 2;
 
 int fruitX , fruitY;
 
+int snakeLength = 5;
+
 void createFood(){
     fruitX = rand() % WIDTH;
     fruitY = rand() % HEIGHT;
-    for (int i = x)
+    for (int i = 0;i < snakeLength;i++){
+        if (fruitX == snakeX[i] && fruitY == sankeY[i]){
+            createFood();
+            break;
+        }
+    }
 }
 
 void input(){
