@@ -15,6 +15,8 @@ int fruitX , fruitY;
 
 int snakeLength = 5;
 
+bool gameover = false;
+
 void createFood(){
     fruitX = rand() % WIDTH;
     fruitY = rand() % HEIGHT;
@@ -26,18 +28,17 @@ void createFood(){
     }
 }
 
-
 void userInput(){
     if (kbhit()){
         char move = tolower(getch());
         if (move == 'w'){
-            printf("You pressed W\n");
+            y--;
         }else if(move == 'a'){
-            printf("You pressed A\n");
+            x--;
         }else if(move == 's'){
-            printf("You pressed S\n");
+            y++;
         }else if(move == 'd'){
-            printf("You pressed D\n");
+            x++;
         }
     }
 }
@@ -71,7 +72,7 @@ void draw(){
 int main(){
     createFood();
 
-    while (true){
+    while (!gameover){
         userInput();
         draw();
         Sleep(33);
