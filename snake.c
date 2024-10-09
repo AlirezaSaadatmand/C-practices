@@ -26,7 +26,8 @@ void createFood(){
     }
 }
 
-void input(){
+
+void userInput(){
     if (kbhit()){
         char move = tolower(getch());
         if (move == 'w'){
@@ -50,7 +51,16 @@ void draw(){
             }else if (j == 0 || j == WIDTH - 1){
                 printf("#");
             }else{
-                printf(" ");
+                bool isSnake = false;
+                for (int i = 0;i < snakeLength ;i++){
+                    if (j == snakeX[i] && i == sankeY[i]){
+                        printf("O");
+                        isSnake = true;
+                    }
+                }
+                if (!isSnake){
+                    printf(" ");
+                }
             }
         }
         printf("\n");
@@ -59,9 +69,10 @@ void draw(){
 
 
 int main(){
+    createFood();
 
     while (true){
-        input();
+        userInput();
         draw();
         Sleep(33);
     }
