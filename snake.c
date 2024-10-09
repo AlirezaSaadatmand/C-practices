@@ -4,8 +4,8 @@
 #include <stdlib.h>
 #include <windows.h>
 
-#define WIDTH 40;
-#define HEIGHT 20;
+#define WIDTH 40
+#define HEIGHT 20
 
 int snakeX[100], sankeY[100];
 
