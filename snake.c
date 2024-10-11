@@ -125,7 +125,7 @@ int main(){
         movement();
         userInput();
         draw();
-        Sleep(40);
+        Sleep(35);
     }
 
     return 0;
