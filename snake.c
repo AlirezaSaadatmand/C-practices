@@ -7,7 +7,7 @@
 #define WIDTH 40
 #define HEIGHT 20
 
-int snakeX[100], sankeY[100];
+int snakeX[100], snakeY[100];
 
 int x = WIDTH / 2 , y = HEIGHT / 2;
 
@@ -21,7 +21,7 @@ void createFood(){
     fruitX = rand() % WIDTH;
     fruitY = rand() % HEIGHT;
     for (int i = 0;i < snakeLength;i++){
-        if (fruitX == snakeX[i] && fruitY == sankeY[i]){
+        if (fruitX == snakeX[i] && fruitY == snakeY[i]){
             createFood();
             break;
         }
@@ -54,7 +54,7 @@ void draw(){
             }else{
                 bool isSnake = false;
                 for (int k = 0;k < snakeLength ;k++){
-                    if (j == snakeX[k] && i == sankeY[k]){
+                    if (j == snakeX[k] && i == snakeY[k]){
                         printf("O");
                         isSnake = true;
                     }
@@ -68,15 +68,31 @@ void draw(){
     }
 }
 
+void movement(){
+    int prevX = snakeX[0];
+    int prevY = snakeY[0];
+    int prev2X, prev2Y;
+    snakeX[0] = x;
+    snakeY[0] = y;
+    for (int i = 1; i < snakeLength; i++) {
+        prev2X = snakeX[i];
+        prev2Y = snakeY[i];
+        snakeX[i] = prevX;
+        snakeY[i] = prevY;
+        prevX = prev2X;
+        prevY = prev2Y;
+    }
+}
 
 int main(){
     snakeX[0] = x;
-    sankeY[0] = y;
+    snakeY[0] = y;
     createFood();
 
 
     while (!gameover){
         userInput();
+        movement();
         draw();
         Sleep(33);
     }
