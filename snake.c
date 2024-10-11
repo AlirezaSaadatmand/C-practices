@@ -2,6 +2,7 @@
 #include <conio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <time.h>
 #include <windows.h>
 
 #define WIDTH 40
@@ -19,9 +20,17 @@ int moveKey = 0;
 
 bool gameover = false;
 
+
+
 void createFood(){
     fruitX = rand() % WIDTH;
+    if(fruitX == 0){
+        fruitX++;
+    }
     fruitY = rand() % HEIGHT;
+    if(fruitY == 0){
+        fruitY++;
+    }
 }
 
 void userInput(){
@@ -41,11 +50,11 @@ void userInput(){
 
 void draw(){
     system("cls");
-    for (int i = 0;i < HEIGHT;i++){
-        for (int j = 0;j < WIDTH;j++){
-            if (i == 0 || i == HEIGHT - 1){
+    for (int i = 0;i <= HEIGHT;i++){
+        for (int j = 0;j <= WIDTH;j++){
+            if (i == 0 || i == HEIGHT){
                 printf("#");
-            }else if (j == 0 || j == WIDTH - 1){
+            }else if (j == 0 || j == WIDTH){
                 printf("#");
             }else if (j == fruitX && i == fruitY){
                 printf("X");
@@ -97,12 +106,13 @@ void movement(){
         createFood();
     }
 
-    if (x < 0 || y < 0 || x > WIDTH || y > HEIGHT){
+    if (x < 0 || y < 0 || x >= WIDTH || y >= HEIGHT){
         gameover = true;
     }
 }
 
 int main(){
+    srand(time(NULL)); 
     snakeX[0] = x;
     snakeY[0] = y;
     createFood();
