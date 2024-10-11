@@ -15,6 +15,8 @@ int fruitX , fruitY;
 
 int snakeLength = 5;
 
+int moveKey = 0;
+
 bool gameover = false;
 
 void createFood(){
@@ -32,13 +34,13 @@ void userInput(){
     if (kbhit()){
         char move = tolower(getch());
         if (move == 'w'){
-            y--;
+            moveKey = 1;
         }else if(move == 'a'){
-            x--;
+            moveKey = 2;
         }else if(move == 's'){
-            y++;
+            moveKey = 3;
         }else if(move == 'd'){
-            x++;
+            moveKey = 4;
         }
     }
 }
@@ -81,6 +83,16 @@ void movement(){
         snakeY[i] = prevY;
         prevX = prev2X;
         prevY = prev2Y;
+    }
+
+    if (moveKey == 1){
+        y--;
+    }else if(moveKey == 2){
+        x--;
+    }else if(moveKey == 3){
+        y++;
+    }else if(moveKey == 4){
+        x++;
     }
 }
 
