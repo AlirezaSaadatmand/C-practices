@@ -20,7 +20,7 @@ int moveKey = 0;
 
 bool gameover = false;
 
-
+int score = 0;
 
 void createFood(){
     fruitX = rand() % WIDTH;
@@ -74,6 +74,8 @@ void draw(){
         }
         printf("\n");
     }
+
+    printf("\nScore : %d" , score);
 }
 
 void movement(){
@@ -104,6 +106,7 @@ void movement(){
     if (x == fruitX && y == fruitY){
         snakeLength++;
         createFood();
+        score += 10;
     }
 
     if (x < 0 || y < 0 || x >= WIDTH || y >= HEIGHT){
@@ -122,7 +125,7 @@ int main(){
         movement();
         userInput();
         draw();
-        Sleep(33);
+        Sleep(40);
     }
 
     return 0;
