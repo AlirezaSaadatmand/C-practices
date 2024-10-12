@@ -5,8 +5,8 @@
 #include <time.h>
 #include <windows.h>
 
-#define WIDTH 40
-#define HEIGHT 20
+#define WIDTH 50
+#define HEIGHT 25
 
 int snakeX[100], snakeY[100];
 
