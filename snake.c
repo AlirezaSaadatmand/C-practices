@@ -109,7 +109,7 @@ void movement(){
         score += 10;
     }
 
-    if (x < 0 || y < 0 || x >= WIDTH || y >= HEIGHT){
+    if (x <= 0 || y <= 0 || x >= WIDTH || y >= HEIGHT){
         gameover = true;
     }
 }
