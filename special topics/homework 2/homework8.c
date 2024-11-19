@@ -12,34 +12,32 @@ int main(){
 
         if (number == 2){
             y++;
-            if (y == n){
+            if (y == m){
                 y = 0;
             }
             change(m , n , x , y);
         }else if (number == 4){
             x--;
             if (x < 0){
-                x = m - 1;
+                x = n - 1;
             }
             change(m , n , x , y);
         }else if (number == 6){
             x++;
-            if (x == m){
+            if (x == n){
                 x = 0;
             }
             change(m , n , x , y);
         }else if (number == 8){
             y--;
             if (y < 0){
-                y = n - 1;
+                y = m - 1;
             }
             change(m , n , x , y);
         }else{
             printf("Invalid number\n");
         }
-
     }
-
     return 0;
 }
 
