@@ -1,29 +1,33 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include "cJSON/cJSON.h"
 
-int prime(int number);
+int main() {
+    // Create a JSON object
+    cJSON *root = cJSON_CreateObject();
 
-int main(){
-	int a , b;
-	scanf("%d %d" , &a , &b);
+    // Add data to the JSON object
+    cJSON_AddStringToObject(root, "name1", "John");
+    cJSON_AddNumberToObject(root, "age", 30);
+    cJSON_AddBoolToObject(root, "is_student", 0);
 
-	for (int i = a ; i < b ; i++){
-		if (prime(i)){
-			printf("%d \t" , i);
-		}
-	}
-	return 0;
-}
+    // Convert JSON object to a string
+    char *json_string = cJSON_Print(root);
 
-int prime(int number){
-	int count = 0;
-	for (int i = 2 ; i < number ; i++){
-		if (number % i == 0){
-			count++;
-		}
-	}
-	if (count == 0){
-		return 1;
-	}else{
-		return 0;
-	}
+    // Save JSON string to a file
+    FILE *file = fopen("output.json", "w");
+    if (file == NULL) {
+        perror("Failed to open file");
+        cJSON_Delete(root);
+        free(json_string);
+        return 1;
+    }
+    fprintf(file, "%s", json_string);
+    fclose(file);
+
+    // Free allocated memory
+    cJSON_Delete(root);
+    free(json_string);
+
+    return 0;
 }
