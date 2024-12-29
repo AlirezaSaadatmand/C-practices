@@ -28,7 +28,6 @@ int loadDataFromTextFile();
 int main() {
     int choice, userIndex;
 
-    // Load data from text file
     if (!loadDataFromTextFile()){
         return 0;
     }
@@ -72,7 +71,6 @@ int main() {
         printf("--------------------------------------");
     } while (choice != 5);
 
-    // Save data to text file
     saveDataToTextFile();
 
     return 0;
